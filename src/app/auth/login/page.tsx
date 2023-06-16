@@ -1,4 +1,10 @@
-import LoginForm from "@/app/components/LoginForm";
+
+import LoginForm from "@/app/components/auth/LoginForm";
+
+export const metadata = {
+  title: 'Login Page',
+  description: 'Get into the world of development',
+}
 
 export default function Login() {
   return (

@@ -1,6 +1,11 @@
-import LogoutButton from "../components/LogoutButton";
-import ChatDisplay from "../components/chatDisplat";
-import MessageDisplay from "../components/messageDisplay";
+import LogoutButton from "../components/chat/LogoutButton";
+import ChatDisplay from "../components/chat/chatDisplay";
+import MessageDisplay from "../components/chat/messageDisplay";
+
+export const metadata = {
+  title: "Chit-Chat with developers",
+  description: "Get into the world of development",
+};
 
 export default function ChatPage() {
   return (

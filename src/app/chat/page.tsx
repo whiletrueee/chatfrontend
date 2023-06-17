@@ -14,7 +14,7 @@ export default function ChatPage() {
         <div className="">Home</div>
         <LogoutButton />
       </div>
-      <div className="flex w-full justify-center items-start">
+      <div className="flex w-full h-[80vh] justify-center items-start">
         <ChatDisplay />
         <MessageDisplay />
       </div>

@@ -31,6 +31,7 @@ const getChatData = async () => {
 export default function ChatDisplay() {
   const { changeChat, addMessages, emptyMessages } = useChatMessageContext();
   const { data, error } = useSWR("getChatData", getChatData);
+
   const fetchMessages = async (userIdTo: string) => {
     emptyMessages();
     try {
@@ -52,6 +53,7 @@ export default function ChatDisplay() {
         `http://localhost:5050/api/chat/messages`,
         config
       );
+      console.log(res.data);
       res.data.forEach((element: any) => {
         addMessages(element);
       });
@@ -63,7 +65,7 @@ export default function ChatDisplay() {
   if (!data) return <div>Loading...</div>;
 
   return (
-    <div className="w-[40%] h-[80vh] border-4 border-green-800">
+    <div className="w-[40%] h-full border-4 border-green-800">
       <div className="px-4 py-2 flex flex-col gap-5">
         {data.data.map((user: any) => {
           return (

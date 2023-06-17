@@ -35,7 +35,8 @@ export default function MessageDisplay() {
       if (res.status === 200) {
         setTypedMessage("");
         textMessageRef.current!.style.height = "auto";
-        textMessageRef.current!.style.height = textMessageRef.current!.scrollHeight + "px";
+        textMessageRef.current!.style.height =
+          textMessageRef.current!.scrollHeight + "px";
       }
       // socket.emit("sendMessage", message);}
     } catch (error: any) {
@@ -44,7 +45,7 @@ export default function MessageDisplay() {
   };
 
   return (
-    <div className="w-[50%] h-[80vh] border-4 border-green-800 flex flex-col justify-start px-3 py-4">
+    <div className="w-[50%] h-full border-4 border-green-800 flex flex-col justify-start px-3 py-4">
       <div className="h-[10%]">
         <div className="text-lg font-semibold text-green-600">
           {currentChat.name}
@@ -53,13 +54,32 @@ export default function MessageDisplay() {
           {currentChat.email}
         </div>
       </div>
-      <div className="h-[80%] flex flex-col justify-end gap-1 mb-4">
-        {messages.map((message, index) => {
-          if (currentChat.userId === message.to) {
+      <div className="h-[80%] overflow-y-auto flex flex-col justify-end scroll-m-0">
+        <div className="flex flex-col justify-end gap-1 mb-4 px-2">
+          {messages.map((message, index) => {
+            if (currentChat.userId === message.to) {
+              return (
+                <div
+                  key={`${index}+${message._id}`}
+                  className={`flex flex-col items-end`}
+                >
+                  <div
+                    className={`flex flex-col gap-1 bg-green-700 w-fit px-2 py-1 rounded-xl max-w-[80%] h-auto break-words`}
+                  >
+                    <div className={`text-base font-semibold text-black`}>
+                      {message.message}
+                    </div>
+                    <div className="text-sm text-white/40">
+                      {new Date(message.createdAt).toLocaleString()}
+                    </div>
+                  </div>
+                </div>
+              );
+            }
             return (
               <div
                 key={`${index}+${message._id}`}
-                className={`flex flex-col items-end`}
+                className={`flex flex-col items-start`}
               >
                 <div
                   className={`flex flex-col gap-1 bg-green-700 w-fit px-2 py-1 rounded-xl max-w-[80%]`}
@@ -73,25 +93,8 @@ export default function MessageDisplay() {
                 </div>
               </div>
             );
-          }
-          return (
-            <div
-              key={`${index}+${message._id}`}
-              className={`flex flex-col items-start`}
-            >
-              <div
-                className={`flex flex-col gap-1 bg-green-700 w-fit px-2 py-1 rounded-xl max-w-[80%]`}
-              >
-                <div className={`text-base font-semibold text-black`}>
-                  {message.message}
-                </div>
-                <div className="text-sm text-white/40">
-                  {new Date(message.createdAt).toLocaleString()}
-                </div>
-              </div>
-            </div>
-          );
-        })}
+          })}
+        </div>
       </div>
 
       <div className="flex flex-col">

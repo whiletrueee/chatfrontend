@@ -11,7 +11,7 @@ export interface chatUser {
   currentChat: userChatMetaData;
   changeChat: (user: userChatMetaData) => void;
   messages: any[];
-  addMessages: (messages: any[]) => void;
+  addMessages: (chat: any) => void;
   emptyMessages: () => void;
 }
 
@@ -19,7 +19,7 @@ export const chatMessageContext = createContext<chatUser>({
   currentChat: {} as userChatMetaData,
   changeChat: (user: userChatMetaData) => {},
   messages: [],
-  addMessages: (messages: any[]) => {},
+  addMessages: (chat: any) => {},
   emptyMessages: () => {},
 });
 

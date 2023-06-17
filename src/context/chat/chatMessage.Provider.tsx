@@ -11,14 +11,14 @@ const ChatMessageProvider = ({ children }: { children: ReactNode }) => {
     setcurrentChat({ ...user });
   };
 
-  const [messages, setmessages] = useState<any>([]);
+  const [messages, setMessages] = useState<any>([] as any);
 
-  const addMessages = (message: any) => {
-    setmessages([...messages, message]);
+  const addMessages = (chat: any) => {
+    setMessages((prev: any) => [...prev, chat]);
   };
 
   const emptyMessages = () => {
-    setmessages([]);
+    setMessages((prev: any) => []);
   };
 
   return (

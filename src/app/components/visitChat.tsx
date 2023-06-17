@@ -7,7 +7,6 @@ export default function VisitChat() {
   const visitChat = () => {
     const user = localStorage.getItem("userId");
     const token = localStorage.getItem("token");
-    console.log(user, token);
     if (user !== null && token !== null) {
       router.push("/chat");
     } else {

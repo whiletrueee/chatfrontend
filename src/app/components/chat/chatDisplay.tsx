@@ -50,10 +50,9 @@ export default function ChatDisplay() {
         return new Error("Token or userId is null");
       }
       const res = await axios.get(
-        `http://localhost:5050/api/chat/messages`,
+        `http://localhost:5050/api/chat/recieve-messages`,
         config
       );
-      console.log(res.data);
       res.data.forEach((element: any) => {
         addMessages(element);
       });

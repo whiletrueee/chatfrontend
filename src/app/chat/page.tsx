@@ -1,6 +1,5 @@
 import LogoutButton from "../components/chat/LogoutButton";
-import ChatDisplay from "../components/chat/chatDisplay";
-import MessageDisplay from "../components/chat/messageDisplay";
+import ChatInterface from "../components/chat/completeChatInterface";
 
 export const metadata = {
   title: "Chit-Chat with developers",
@@ -15,8 +14,7 @@ export default function ChatPage() {
         <LogoutButton />
       </div>
       <div className="flex w-full h-[80vh] justify-center items-start">
-        <ChatDisplay />
-        <MessageDisplay />
+        <ChatInterface />
       </div>
     </>
   );

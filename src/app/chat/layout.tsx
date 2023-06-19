@@ -1,4 +1,5 @@
 import ChatMessageProvider from "@/context/chat/chatMessage.Provider";
+import SocketContextProvider from "@/context/socket/socketContext.Provider";
 import UserProfileProvider from "@/context/user/userContext.Provide";
 
 export const metadata = {
@@ -13,9 +14,11 @@ export default function ChatLayout({
 }) {
   return (
     <div className="flex flex-col h-screen py-[3vh] justify-start">
-      <UserProfileProvider>
-        <ChatMessageProvider>{children}</ChatMessageProvider>
-      </UserProfileProvider>
+      <SocketContextProvider>
+        <UserProfileProvider>
+          <ChatMessageProvider>{children}</ChatMessageProvider>
+        </UserProfileProvider>
+      </SocketContextProvider>
     </div>
   );
 }

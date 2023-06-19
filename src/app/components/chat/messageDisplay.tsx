@@ -1,18 +1,28 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { use, useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { useChatMessageContext } from "@/context/chat/chatMessageContext";
+import { useSocketClientContext } from "@/context/socket/socketContext";
 
 export default function MessageDisplay() {
   const [typedMessage, setTypedMessage] = useState<string>("");
-  const { currentChat, messages } = useChatMessageContext();
+  const { currentChat, messages, addMessages } = useChatMessageContext();
+  const socket = useSocketClientContext();
   const textMessageRef = useRef<HTMLTextAreaElement>(null);
   textMessageRef.current?.addEventListener("input", () => {
     textMessageRef.current!.style.height = "auto";
     textMessageRef.current!.style.height =
       textMessageRef.current!.scrollHeight + "px";
   });
+
+  useEffect(() => {
+    socket.on("send-message", (message: any) => {
+      addMessages(message);
+      console.log(message);
+    });
+  }, [socket]);
+
   const sendMessage = async () => {
     if (typedMessage === "") {
       return;
@@ -54,8 +64,8 @@ export default function MessageDisplay() {
           {currentChat.email}
         </div>
       </div>
-      <div className="h-[80%] overflow-y-auto flex flex-col justify-end scroll-m-0">
-        <div className="flex flex-col justify-end gap-1 mb-4 px-2">
+      <div className="h-[80%] overflow-y-auto flex flex-col-reverse">
+        <div className="flex flex-col justify-end gap-1 mb-4 px-2 ">
           {messages.map((message, index) => {
             if (currentChat.userId === message.to) {
               return (

@@ -16,7 +16,7 @@ export default function RegisterForm() {
     };
     try {
       const res = await axios.post(
-        `${process.env.BASE_API}/api/auth/register`,
+        `${process.env.NEXT_PUBLIC_SERVER_API}/api/auth/register`,
         formData
       );
       toast.success(res.data.message);

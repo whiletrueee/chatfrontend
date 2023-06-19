@@ -1,8 +1,8 @@
 import { createContext, useContext } from "react";
 import { io } from "socket.io-client";
 
-const BASE_API = process.env.BASE_API!;
-export const socket = io(BASE_API);
+const NEXT_PUBLIC_SERVER_API = process.env.NEXT_PUBLIC_SERVER_API!;
+export const socket = io(NEXT_PUBLIC_SERVER_API);
 
 export const socketContext = createContext<any>({
   socket: {} as any,

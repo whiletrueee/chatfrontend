@@ -15,7 +15,7 @@ export default function LoginForm() {
     };
     try {
       const res = await axios.post(
-        `${process.env.BASE_API}/api/auth/login`,
+        `${process.env.NEXT_PUBLIC_SERVER_API}/api/auth/login`,
         formData
       );
       if (res.data) {

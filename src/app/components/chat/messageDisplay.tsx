@@ -37,7 +37,7 @@ export default function MessageDisplay() {
       };
 
       const res = await axios.post(
-        `${process.env.BASE_API}/api/chat/send-message`,
+        `${process.env.NEXT_PUBLIC_SERVER_API}/api/chat/send-message`,
         data,
         { headers: { authorization: token } }
       );

@@ -19,7 +19,7 @@ const getChatData = async () => {
       return new Error("Token or userId is null");
     }
     const res = await axios.get(
-      `http://localhost:5050/api/chat/all-users`,
+      `${process.env.BASE_API}/api/chat/all-users`,
       config
     );
     return res;
@@ -50,7 +50,7 @@ export default function ChatDisplay() {
         return new Error("Token or userId is null");
       }
       const res = await axios.get(
-        `http://localhost:5050/api/chat/recieve-messages`,
+        `${process.env.BASE_API}/api/chat/recieve-messages`,
         config
       );
       res.data.forEach((element: any) => {

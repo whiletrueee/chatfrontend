@@ -16,7 +16,7 @@ export default function RegisterForm() {
     };
     try {
       const res = await axios.post(
-        "http://localhost:5050/api/auth/register",
+        `${process.env.BASE_API}/api/auth/register`,
         formData
       );
       toast.success(res.data.message);

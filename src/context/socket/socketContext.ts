@@ -1,7 +1,8 @@
 import { createContext, useContext } from "react";
 import { io } from "socket.io-client";
 
-export const socket = io("http://localhost:5050");
+const BASE_API = process.env.BASE_API!;
+export const socket = io(BASE_API);
 
 export const socketContext = createContext<any>({
   socket: {} as any,

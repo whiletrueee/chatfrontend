@@ -15,7 +15,7 @@ export default function LoginForm() {
     };
     try {
       const res = await axios.post(
-        "http://localhost:5050/api/auth/login",
+        `${process.env.BASE_API}/api/auth/login`,
         formData
       );
       if (res.data) {

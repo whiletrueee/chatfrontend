@@ -37,7 +37,7 @@ export default function MessageDisplay() {
       };
 
       const res = await axios.post(
-        `http://localhost:5050/api/chat/send-message`,
+        `${process.env.BASE_API}/api/chat/send-message`,
         data,
         { headers: { authorization: token } }
       );
@@ -92,7 +92,7 @@ export default function MessageDisplay() {
                 className={`flex flex-col items-start`}
               >
                 <div
-                  className={`flex flex-col gap-1 bg-green-700 w-fit px-2 py-1 rounded-xl max-w-[80%]`}
+                  className={`flex flex-col gap-1 bg-green-700 w-fit px-2 py-1 rounded-xl max-w-[80%] h-auto break-words`}
                 >
                   <div className={`text-base font-semibold text-black`}>
                     {message.message}
